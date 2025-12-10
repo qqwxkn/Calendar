@@ -1,3 +1,4 @@
+БД на DBeaver PostgreSQL
 1. Создание таблицы событий
 CREATE TABLE IF NOT EXISTS events (
     id SERIAL PRIMARY KEY,
