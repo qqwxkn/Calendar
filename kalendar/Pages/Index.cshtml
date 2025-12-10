@@ -1,0 +1,74 @@
+﻿@page
+@model IndexModel
+
+<h2 class="text-center mb-4">Календарь — Ноябрь 2025</h2>
+
+<div class="calendar">
+    @foreach (var dayName in new[] { "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс" })
+    {
+        <div class="day-header">@dayName</div>
+    }
+
+    @for (int i = 0; i < 5; i++)
+    {
+        <div></div>
+    }
+
+    @for (int day = 1; day <= 30; day++)
+    {
+        bool hasEvents = Model.EventsByDay.ContainsKey(day);
+        <div class="day-cell @(hasEvents ? "has-events" : "")" data-day="@day">
+            <div class="day-number">@day</div>
+            @if (hasEvents)
+            {
+                @foreach (var ev in Model.EventsByDay[day])
+                {
+                    @if(ev.Category == "Личное" || ev.Category == "личное")
+                    {
+                        <span class="category-lich">@ev.Category</span>
+                    }
+                    else if (ev.Category == "Работа" || ev.Category == "работа")
+                    {
+                        <span class="category-rab">@ev.Category</span>
+                    }
+                    else if (ev.Category == "Встречи" || ev.Category == "встречи")
+                    {
+                        <span class="category-vstr">@ev.Category</span>
+                    }
+                    else
+                    {
+                        <span class="category">@ev.Category</span>
+                    }
+                }
+            }
+        </div>
+    }
+</div>
+
+<div class="modal fade" id="dayModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">События на <span id="modal-day"></span> ноября 2025</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div id="events-list"></div>
+                <hr />
+                <h6>Добавить новое событие:</h6>
+                <form method="post" asp-page-handler="AddEvent">
+                    <input type="hidden" name="Day" id="form-day-input" />
+                    <div class="mb-2">
+                        <label class="form-label">Категория</label>
+                        <input type="text" name="Category" class="form-control form-control-sm" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Описание события</label>
+                        <textarea name="Event" class="form-control form-control-sm" rows="2" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Добавить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

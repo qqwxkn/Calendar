@@ -1,0 +1,105 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.day-header {
+    text-align: center;
+    font-weight: bold;
+    padding: 8px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.day-cell {
+    height: 80px;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 6px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+    .day-cell:hover {
+        background-color: #f1f3f5;
+    }
+
+    .day-cell.has-events {
+        border-color: #0d6efd;
+    }
+
+.day-number {
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #212529;
+}
+
+.category {
+    display: block;
+    font-size: 11px;
+    color: #8100ff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.category-lich {
+    display: block;
+    font-size: 11px;
+    color: #0bff01;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.category-rab {
+    display: block;
+    font-size: 11px;
+    color: #ff0000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.category-vstr {
+    display: block;
+    font-size: 11px;
+    color: #0d6efd;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
